@@ -1,5 +1,9 @@
 pipeline {
 	agent any
+	    tools {
+            maven 'Maven 3.3.9'
+            jdk 'jdk8'
+        }
 	environment {
 		BUILD_RELEASE_VERSION = readMavenPom().getVersion().replace("-SNAPSHOT", "")
 		IMAGE = readMavenPom().getArtifactId()
