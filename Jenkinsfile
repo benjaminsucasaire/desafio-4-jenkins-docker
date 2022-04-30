@@ -3,7 +3,7 @@ pipeline {
 	environment {
 		BUILD_RELEASE_VERSION = readMavenPom().getVersion().replace("-SNAPSHOT", "")
 		IMAGE = readMavenPom().getArtifactId()
-		DOCKER_REGISTRY = "roxsross12"
+		DOCKER_REGISTRY = "benjaminsucasaire"
         DOCKER_HUB_LOGIN = credentials('docker-hub')
 	}
 	stages {
