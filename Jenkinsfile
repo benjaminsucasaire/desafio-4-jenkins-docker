@@ -16,9 +16,8 @@ pipeline {
 		}
 		stage('check tools') {
 			steps {
-			    sh 'echo $M2_HOME'
-			    sh 'echo $MAVEN_HOME'
-			    sh 'echo $JAVA_HOME'
+			    sh 'export MAVEN_HOME=/opt/maven'
+			    sh 'export PATH=$PATH:$MAVEN_HOME/bin'
 				sh "mvn -version"
 			}
 		}
