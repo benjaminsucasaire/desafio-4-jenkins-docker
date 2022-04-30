@@ -16,9 +16,9 @@ pipeline {
 		}
 		stage('check tools') {
 			steps {
-			    echo '$M2_HOME'
-			    echo '$MAVEN_HOME'
-			    echo '$JAVA_HOME'
+			    sh 'echo $M2_HOME'
+			    sh 'echo $MAVEN_HOME'
+			    sh 'echo $JAVA_HOME'
 				sh "mvn -version"
 			}
 		}
