@@ -2,7 +2,6 @@ pipeline {
 	agent any
 	    tools {
             maven 'M3'
-            jdk 'jdk8'
         }
 	environment {
 		BUILD_RELEASE_VERSION = readMavenPom().getVersion().replace("-SNAPSHOT", "")
