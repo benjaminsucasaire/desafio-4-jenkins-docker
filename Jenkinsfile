@@ -2,12 +2,14 @@ pipeline {
 	agent any
 	    tools {
             maven 'M3'
+           'org.jenkinsci.plugins.docker.commons.tools.DockerTool' '18.09'
         }
 	environment {
 		BUILD_RELEASE_VERSION = readMavenPom().getVersion().replace("-SNAPSHOT", "")
 		IMAGE = readMavenPom().getArtifactId()
 		DOCKER_REGISTRY = "benjaminsucasaire"
         DOCKER_HUB_LOGIN = credentials('Dokcerhub-Applying-Sintad-bash')
+        DOCKER_CERT_PATH = credentials('myDocker')
 	}
 	stages {
 		stage('checkout github') {
@@ -28,12 +30,6 @@ pipeline {
 				sh 'mvn clean install -Dmaven.test.skip=true'
 			}
 		}
-	    stage('Initialize'){
-	    steps {
-            def dockerHome = tool 'myDocker'
-            env.PATH = "${dockerHome}/bin:${env.PATH}"
-            }
-         }
 
 		stage('Build docker') {
 			steps {
