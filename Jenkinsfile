@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	    tools {
             maven 'M3'
-           'org.jenkinsci.plugins.docker.commons.tools.DockerTool' '18.09'
+           'org.jenkinsci.plugins.docker.commons.tools.DockerTool' 'myDocker'
         }
 	environment {
 		BUILD_RELEASE_VERSION = readMavenPom().getVersion().replace("-SNAPSHOT", "")
