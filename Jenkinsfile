@@ -28,7 +28,11 @@ pipeline {
 				sh 'mvn clean install -Dmaven.test.skip=true'
 			}
 		}
-	
+	 stage('Initialize'){
+            def dockerHome = tool 'myDocker'
+            env.PATH = "${dockerHome}/bin:${env.PATH}"
+        }
+
 		stage('Build docker') {
 			steps {
 				echo("Hago un build de docker imagen ${IMAGE}:v${BUILD_RELEASE_VERSION}")
