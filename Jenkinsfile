@@ -28,10 +28,12 @@ pipeline {
 				sh 'mvn clean install -Dmaven.test.skip=true'
 			}
 		}
-	 stage('Initialize'){
+	    stage('Initialize'){
+	    steps {
             def dockerHome = tool 'myDocker'
             env.PATH = "${dockerHome}/bin:${env.PATH}"
-        }
+            }
+         }
 
 		stage('Build docker') {
 			steps {
