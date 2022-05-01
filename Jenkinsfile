@@ -9,7 +9,6 @@ pipeline {
 		IMAGE = readMavenPom().getArtifactId()
 		DOCKER_REGISTRY = "benjaminsucasaire"
         DOCKER_HUB_LOGIN = credentials('Dokcerhub-Applying-Sintad-bash')
-        DOCKER_CERT_PATH = credentials('myDocker')
 	}
 	stages {
 		stage('checkout github') {
