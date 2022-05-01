@@ -2,7 +2,6 @@ pipeline {
 	agent any
 	    tools {
             maven 'M3'
-            docker 'Dockerplugin'
         }
 	environment {
 		BUILD_RELEASE_VERSION = readMavenPom().getVersion().replace("-SNAPSHOT", "")
