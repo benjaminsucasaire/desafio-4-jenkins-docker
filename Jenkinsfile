@@ -2,13 +2,15 @@ pipeline {
 	agent any
 	    tools {
             maven 'M3'
-           'org.jenkinsci.plugins.docker.commons.tools.DockerTool' 'myDocker'
+        'org.jenkinsci.plugins.docker.commons.tools.DockerTool' '18.09'
+
         }
 	environment {
 		BUILD_RELEASE_VERSION = readMavenPom().getVersion().replace("-SNAPSHOT", "")
 		IMAGE = readMavenPom().getArtifactId()
 		DOCKER_REGISTRY = "benjaminsucasaire"
         DOCKER_HUB_LOGIN = credentials('Dokcerhub-Applying-Sintad-bash')
+        DOCKER_CERT_PATH = credentials('Dokcerhub-Applying-Sintad-bash')
 	}
 	stages {
 		stage('checkout github') {
