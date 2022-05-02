@@ -45,6 +45,13 @@ pipeline {
 				echo("Borro la imagen ${IMAGE}:v${BUILD_RELEASE_VERSION}")
 				sh("docker rmi ${IMAGE}:v${BUILD_RELEASE_VERSION}")
 			}
-		} 
+		}
+        stage('docker Delete local') {
+			steps {
+                echo("Eliminar Docker Imagen")
+				echo("Borro la imagen ${IMAGE}:v${BUILD_RELEASE_VERSION}")
+				sh("docker rmi ${IMAGE}:v${BUILD_RELEASE_VERSION}")
+			}
+		}
 	}
 }
