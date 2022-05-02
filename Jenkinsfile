@@ -42,8 +42,6 @@ pipeline {
                 echo("Hago Docker Login")
                 sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
 				sh("docker push ${DOCKER_REGISTRY}/${IMAGE}")
-				echo("Borro la imagen ${IMAGE}:v${BUILD_RELEASE_VERSION}")
-				sh("docker rmi ${IMAGE}:v${BUILD_RELEASE_VERSION}")
 			}
 		}
         stage('docker Delete local') {
